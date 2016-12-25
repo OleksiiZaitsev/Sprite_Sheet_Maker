@@ -8,9 +8,9 @@ import threading
 import re
 from math import sqrt
 ################################
-path = r"D:\MyPython\alphamerge"
-if path not in sys.path:
-    sys.path.append(path)
+# path = r"D:\MyPython\alphamerge"
+# if path not in sys.path:
+#     sys.path.append(path)
 import myUI
 ################################
 
@@ -22,6 +22,7 @@ UI.setupUi(window)
 class rootProgram():
     def __init__(self):
         self.progressBar = 0
+        UI.progressBar.setProperty("value", self.progressBar)
         self.refresh = QtCore.QTimer()
         self.refresh.timeout.connect(lambda: rootProgram.variables(self))
         self.refresh.start(1000)
@@ -32,7 +33,7 @@ class rootProgram():
         self.Width = int(UI.lineEdit_Width.text())
         self.Height = int(UI.lineEdit_Height.text())
         self.Size = int(UI.lineEdit_Size.text())
-        UI.progressBar.setProperty("value", self.progressBar)
+
 
     def CreateSprite(self):
         files = os.listdir(self.lineEdit_Sequence_Path)
